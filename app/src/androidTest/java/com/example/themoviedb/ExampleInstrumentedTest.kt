@@ -3,9 +3,22 @@ package com.example.themoviedb
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.themoviedb.common.Constants.BASE_URL
+import com.example.themoviedb.common.Constants.TOKEN
 import com.example.themoviedb.data.sharedPrefs.OnBoardingScreenInfo
 import com.example.themoviedb.data.sharedPrefs.SharedPrefs
 import com.example.themoviedb.domain.usecases.ShowOnBoardingUseCase
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.request.bearerAuth
+import io.ktor.client.request.header
+import io.ktor.client.request.headers
+import io.ktor.client.request.post
+import io.ktor.http.append
+import io.ktor.http.isSuccess
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -47,4 +60,6 @@ class ExampleInstrumentedTest {
         assertEquals(showOnBoardingUseCase.execute(), secondItem)
         assertEquals(showOnBoardingUseCase.execute(), thirdItem)
     }
+
+
 }
